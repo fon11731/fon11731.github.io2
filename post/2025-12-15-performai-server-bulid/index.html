@@ -1,7 +1,7 @@
 <!doctype html>
 <html
   lang="zh-cn" 
-  data-theme-mode="auto"
+  data-theme-mode="true"
   >
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
 <meta
@@ -11,18 +11,18 @@
   如何建立 Sega 游戏服务器 | RevelYun
 </title>
 <meta name="description" content="少女祈祷中..."/><script>
-  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":true,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
   
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="preload"
   as="style"
-  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cUbuntu%20Mono:400,400italic,700,700italic%7cSource%20Code%20Pro:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
 />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7cUbuntu%20Mono:400,400italic,700,700italic%7cSource%20Code%20Pro:400,400italic,700,700italic%7cJetBrains%20Mono:400,400italic,700,700italic&amp;display=swap"
   media="print"
   onload="this.media='all'"
 />
@@ -131,7 +131,7 @@
         <span class="main-nav-link">友链</span>
       </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
   </nav>
-  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+  <nav id="sub-nav" aria-label="Secondary navigation"><a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a></nav></div>
 <header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="如何建立 Sega 游戏服务器"><div id="header-outer">
     <div id="header-title"><span id="logo">
             <h1 data-aos="slide-up">如何建立 Sega 游戏服务器</h1>
@@ -328,7 +328,25 @@
       data-aos="zoom-in"
       >服务器</a
     ></div>
-</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="前言">
+</div><div class="article-entry">
+      <blockquote
+        class="article-summary"
+        data-aos="zoom-in"
+      >
+        <p>前言目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。
+开源的服务器项目主要有两个：
+ARTEMIS AquaDX 本文将先聚焦于 AquaDX 的搭建教程。
+重要提示：本文分享的文件均不可外传！使用时请严格遵循各服务器的开源协议。
+</p>
+      </blockquote>
+    </div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><blockquote
+          class="alert-blockquote warning"
+          id="outdate-blockquote"
+          style="display: none;"
+        >
+          <p class="alert-heading">WARNING</p>
+          <p></p>
+        </blockquote><h1 id="前言">
 <a class="header-anchor" href="#%e5%89%8d%e8%a8%80"></a>
 前言
 </h1><p>目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。</p>
@@ -503,7 +521,22 @@ AquaDX 配置和部署
       本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！
     </p>
     <span class="icon-creative-commons article-copyright-bg"></span></blockquote>
-<a
+<div class="sponsor-wrapper">
+  <div class="sponsor-button">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">赞助</div>
+    <div class="sponsor-icon rotate"></div>
+  </div><div class="sponsor-tip">请作者喝杯咖啡吧</div><div class="sponsor-qr"><div class="sponsor-qr-image-wrapper">
+          <img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@main/image/alipay.jpg" alt="支付宝" width="200" />
+          <p class="sponsor-qr-name">支付宝</p>
+        </div><div class="sponsor-qr-image-wrapper">
+          <img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@main/image/wechat.jpg" alt="微信" width="200" />
+          <p class="sponsor-qr-name">微信</p>
+        </div></div></div><div class="share-wrapper"><a href="https://twitter.com/intent/tweet?url=http://localhost:1313/post/2025-12-15-performai-server-bulid/&amp;text=%e5%a6%82%e4%bd%95%e5%bb%ba%e7%ab%8b%20Sega%20%e6%b8%b8%e6%88%8f%e6%9c%8d%e5%8a%a1%e5%99%a8&amp;via=http://localhost:1313/" target="_blank" rel="noopener noreferrer" title="如何建立 Sega 游戏服务器">
+      <div class="share-icon icon icon-twitter"></div>
+    </a><a href="https://connect.qq.com/widget/shareqq/index.html?url=http://localhost:1313/post/2025-12-15-performai-server-bulid/&amp;title=%e5%a6%82%e4%bd%95%e5%bb%ba%e7%ab%8b%20Sega%20%e6%b8%b8%e6%88%8f%e6%9c%8d%e5%8a%a1%e5%99%a8&amp;desc=%0d%e5%89%8d%e8%a8%80%0d%e7%9b%ae%e5%89%8d%e5%85%b3%e4%ba%8e%20Sega%20%e6%b8%b8%e6%88%8f%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e6%90%ad%e5%bb%ba%e6%95%99%e7%a8%8b%e8%be%83%e4%b8%ba%e7%a8%80%e7%bc%ba%ef%bc%8c%e4%b8%94%e6%90%ad%e5%bb%ba%e8%bf%87%e7%a8%8b%e9%9c%80%e8%a6%81%e4%b8%80%e5%ae%9a%e6%8a%80%e6%9c%af%e5%9f%ba%e7%a1%80%e3%80%82%0a%e5%bc%80%e6%ba%90%e7%9a%84%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%a1%b9%e7%9b%ae%e4%b8%bb%e8%a6%81%e6%9c%89%e4%b8%a4%e4%b8%aa%ef%bc%9a%0aARTEMIS%20AquaDX%20%e6%9c%ac%e6%96%87%e5%b0%86%e5%85%88%e8%81%9a%e7%84%a6%e4%ba%8e%20AquaDX%20%e7%9a%84%e6%90%ad%e5%bb%ba%e6%95%99%e7%a8%8b%e3%80%82%0a%e9%87%8d%e8%a6%81%e6%8f%90%e7%a4%ba%ef%bc%9a%e6%9c%ac%e6%96%87%e5%88%86%e4%ba%ab%e7%9a%84%e6%96%87%e4%bb%b6%e5%9d%87%e4%b8%8d%e5%8f%af%e5%a4%96%e4%bc%a0%ef%bc%81%e4%bd%bf%e7%94%a8%e6%97%b6%e8%af%b7%e4%b8%a5%e6%a0%bc%e9%81%b5%e5%be%aa%e5%90%84%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e5%bc%80%e6%ba%90%e5%8d%8f%e8%ae%ae%e3%80%82%0a&amp;source=http://localhost:1313/" target="_blank" rel="noopener noreferrer" title="如何建立 Sega 游戏服务器">
+      <div class="share-icon icon icon-qq"></div>
+    </a></div><a
           data-aos="zoom-in"
           href="/post/2025-12-15-performai-server-bulid/#comments"
           class="article-comment-link"
@@ -782,7 +815,21 @@ AquaDX 配置和部署
         <div class="sidebar-toc-btn current"></div>
         <div class="sidebar-common-btn"></div>
       </div></nav>
-</div><script
+</div><div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png" />
+        </div>
+      </div><script
     src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
     integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
     src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
@@ -800,18 +847,48 @@ AquaDX 配置和部署
     } else {
       aosInit();
     }
-  </script><script src="/js/pjax_main.js" data-pjax></script><script
+  </script><script src="/js/pjax_main.js" data-pjax></script><script>
+    var ALGOLIA_CONFIG = {
+      logo: '\/images\/algolia_logo.svg',
+      algolia: {
+        applicationID: "4LLB28PFQC",
+        apiKey: "626a9ba0a7ff749dd4e641d369b184aa",
+        indexName: "blog",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": '搜索.....',
+          "hits_empty": '未发现与 「${query}」相关内容',
+          "hits_stats": '找到${hits}条结果（用时 ${time} ms）'
+        }
+      }
+    };
+  </script><script
+    src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"
+    deferintegrity="sha384-xvLS0jfKuoREs7pqkRI/OI8GcqohO5S&#43;jQz7ZBtQXnsXmD&#43;9jDOOY4cL6dCPzlrk" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/@reimujs/instantsearch.js@4.57.0-beta.1/dist/instantsearch.production.min.js"
+    deferintegrity="sha384-aagKMe8nkqaP2DYQc8kkYOL5l&#43;M5Q2WH/Uhr4teOh0Ybp0RZj0kUSDm45qPikMjK" crossorigin="anonymous"></script><script src="/js/algolia_search.js" ></script><script
     src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
     integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
-  if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+  if (! true  || !window.matchMedia('(max-width: 768px)').matches) {
     if (window.firework) {
-      const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+      const options = JSON.parse("{\"excludeelements\":[\"#sidebar\"],\"particles\":[{\"colors\":[\"#FFF\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\",\"rotate\"],\"number\":1,\"shape\":\"polygon\",\"shapeOptions\":{\"alpha\":0.5,\"lineWidth\":6,\"radius\":20,\"sides\":5}},{\"colors\":[\"#FFF\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\",\"rotate\"],\"number\":1,\"shape\":\"star\",\"shapeOptions\":{\"alpha\":0.5,\"lineWidth\":6,\"radius\":20,\"spikes\":5}},{\"colors\":[\"#FFF\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\",\"rotate\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":0.5,\"lineWidth\":6,\"radius\":20}}]}");
       options.excludeElements = options.excludeelements;
       delete options.excludeelements;
       window.firework(options);
     }
   }
-</script>
+</script><script
+    src="https://npm.webcache.cn/quicklink@3.0.1/dist/quicklink.umd.js"
+    integrity="sha384-caMDqvgav/HWdEYQU1QRRHMLleigpL1YHAG0m371DhzfL8rRzUyOb&#43;bEHtwlmYjD" crossorigin="anonymous"></script><script data-pjax>
+    window.quicklink?.listen({
+      timeout:  3000 ,
+      priority:  true ,
+      ignores: JSON.parse("[]")
+    });
+  </script>
+
 
 <div id="lazy-script">
   <div><script data-pjax>
@@ -876,7 +953,7 @@ AquaDX 配置和部署
           el: '.waline-comment',
           serverURL: 'https:\/\/waline-beige-alpha.vercel.app\/',
           lang: document.documentElement.lang || 'en',
-          locale: JSON.parse("{}"),
+          locale: JSON.parse("{\"level0\":\"炼体\",\"level1\":\"炼气\",\"level2\":\"筑基\",\"level3\":\"金丹\",\"level4\":\"元婴\",\"level5\":\"化神\"}"),
           emoji: JSON.parse("[\"https://unpkg.com/@waline/emojis@1.2.0/weibo\",\"https://unpkg.com/@waline/emojis@1.2.0/alus\",\"https://unpkg.com/@waline/emojis@1.2.0/bilibili\",\"https://unpkg.com/@waline/emojis@1.2.0/qq\",\"https://unpkg.com/@waline/emojis@1.2.0/tieba\",\"https://unpkg.com/@waline/emojis@1.2.0/tw-emoji\"]"),
           meta: JSON.parse("[\"nick\",\"mail\",\"link\"]"),
           requiredMeta: JSON.parse("[\"nick\",\"mail\"]"),
@@ -997,7 +1074,34 @@ AquaDX 配置和部署
   };
   loadComments();
 </script></div>
-</div><script
+</div><script data-pjax>
+    var updateTime = _$('#post-update-time')?.innerHTML;
+
+    if (updateTime) {
+      const update = new Date(updateTime);
+      const now = new Date();
+      const diff = now - update;
+      const days = diff / 86400000;
+      const { daysago: daysAgo, message: template } = window.siteConfig.outdate;
+      if (days >= daysAgo) {
+        let message = `This article was last updated on ${updateTime}. Please note that the content may no longer be applicable.`;
+        if (typeof template === 'string') {
+          message = template.replace(/{time}/, updateTime);
+        } else if (typeof template === 'object') {
+          const lang = document.documentElement.lang;
+          const messageKey = Object.keys(template).find(key => key.toLowerCase() === lang.toLowerCase());
+          if (messageKey && template[messageKey]) {
+            message = template[messageKey].replace(/{time}/, updateTime);
+          }
+        }
+        const blockquote = _$('#outdate-blockquote');
+        if (blockquote) {
+          blockquote.querySelectorAll('p')[1].innerText = message;
+          blockquote.style.display = 'flow-root';
+        }
+      }
+    }
+  </script><script
     src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
     asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
     if ('serviceWorker' in navigator) {
@@ -1022,5 +1126,15 @@ AquaDX 配置和部署
     "color: white; background: #ff5252; padding:5px 0;",
     "padding:4px;border:1px solid #ff5252;",
   );
-</script></body>
+</script><script
+    src="https://npm.webcache.cn/pangu@4.0.7/dist/browser/pangu.min.js"
+    integrity="sha384-HeUHqi0nVsPUm/E0ss7OfnIV/yD96JWB8ehZvUuoVax9DpNHL17jj9pdfXHzqDxm" crossorigin="anonymous"></script><script data-pjax>
+    if (document.readyState === "loading") {
+      document.addEventListener('DOMContentLoaded', () => {
+        pangu?.spacingPage();
+      });
+    } else {
+      pangu?.spacingPage();
+    }
+  </script></body>
 </html>
