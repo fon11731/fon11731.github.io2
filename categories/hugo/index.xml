@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on RevelYun&#39;blog</title>
+    <link>http://localhost:1313/categories/hugo/</link>
+    <description>Recent content from RevelYun&#39;blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>fon11731@gmail.com (RevelYun)</managingEditor>
+    <webMaster>fon11731@gmail.com (RevelYun)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Thu, 20 Nov 2025 12:00:00 +0800</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/hugo/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>我的第一篇博客</title>
+      <link>http://localhost:1313/post/first-post/</link>
+      <pubDate>Thu, 20 Nov 2025 12:00:00 &#43;0800</pubDate>
+      <author>fon11731@gmail.com (RevelYun)</author>
+      <guid>http://localhost:1313/post/first-post/</guid>
+      <description>
+        <![CDATA[<h1>我的第一篇博客</h1><p>作者：RevelYun（fon11731@gmail.com）</p>
+        
+          <h1 id="我的第一篇reimu主题博客">
+<a class="header-anchor" href="#%e6%88%91%e7%9a%84%e7%ac%ac%e4%b8%80%e7%af%87reimu%e4%b8%bb%e9%a2%98%e5%8d%9a%e5%ae%a2"></a>
+我的第一篇Reimu主题博客
+</h1><p>这是基于Windows11 + Hugo + GitHub双仓搭建的博客，主题是Reimu！</p>
+<h2 id="reimu主题亮点">
+<a class="header-anchor" href="#reimu%e4%b8%bb%e9%a2%98%e4%ba%ae%e7%82%b9"></a>
+Reimu主题亮点
+</h2><ol>
+<li>二次元风格界面，颜值拉满</li>
+<li>支持明暗模式自动切换</li>
+<li>轻量高效，加载速度快</li>
+</ol>
+<h2 id="后续计划">
+<a class="header-anchor" href="#%e5%90%8e%e7%bb%ad%e8%ae%a1%e5%88%92"></a>
+后续计划
+</h2><ul>
+<li>配置评论功能（Waline/Giscus）</li>
+<li>自定义主题配色</li>
+<li>绑定个人域名</li>
+</ul>
+        
+        <hr><p>本文2025-11-20首发于<a href='http://localhost:1313/'>RevelYun'blog</a>，最后修改于2025-11-20</p>]]>
+      </description>
+      
+        <category>Hugo</category>
+      
+    </item>
+    
+  </channel>
+</rss>

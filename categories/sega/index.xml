@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sega on RevelYun&#39;blog</title>
+    <link>http://localhost:1313/categories/sega/</link>
+    <description>Recent content from RevelYun&#39;blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>fon11731@gmail.com (RevelYun)</managingEditor>
+    <webMaster>fon11731@gmail.com (RevelYun)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Mon, 15 Dec 2025 11:52:25 +0800</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/sega/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>如何建立 Sega 游戏服务器</title>
+      <link>http://localhost:1313/post/2025-12-15-performai-server-bulid/</link>
+      <pubDate>Mon, 15 Dec 2025 11:52:25 &#43;0800</pubDate>
+      <author>fon11731@gmail.com (RevelYun)</author>
+      <guid>http://localhost:1313/post/2025-12-15-performai-server-bulid/</guid>
+      <description>
+        <![CDATA[<h1>如何建立 Sega 游戏服务器</h1><p>作者：RevelYun（fon11731@gmail.com）</p>
+        
+          <h1 id="前言">
+<a class="header-anchor" href="#%e5%89%8d%e8%a8%80"></a>
+前言
+</h1><p>目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。</p>
+<p>开源的服务器项目主要有两个：</p>
+<ul>
+<li><a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/">ARTEMIS</a></li>
+<li><a href="https://github.com/MewoLab/AquaDX/">AquaDX</a></li>
+</ul>
+<p>本文将先聚焦于 AquaDX 的搭建教程。</p>
+<blockquote>
+<p>重要提示：本文分享的文件均不可外传！使用时请严格遵循各服务器的开源协议。</p>
+        
+        <hr><p>本文2025-12-15首发于<a href='http://localhost:1313/'>RevelYun'blog</a>，最后修改于2025-12-15</p>]]>
+      </description>
+      
+        <category>Sega</category><category>游戏</category><category>服务器</category>
+      
+    </item>
+    
+  </channel>
+</rss>

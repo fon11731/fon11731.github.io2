@@ -1,0 +1,1026 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  如何建立 Sega 游戏服务器 | RevelYun
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="如何建立 Sega 游戏服务器 | RevelYun" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="http://localhost:1313/post/2025-12-15-performai-server-bulid/" />
+  <meta
+    property="og:site_name"
+    content="RevelYun&#39;blog"
+  />
+  <meta
+    property="og:image"
+    content="/"
+  />
+  <meta property="article:author" content="RevelYun" />
+  <meta property="article:published_time" content="2025-12-15T11:52:25&#43;08:00" />
+  <meta property="article:modified_time" content="2025-12-15T11:52:25&#43;08:00" /><meta property="article:tag" content="Sega游戏服务器" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css"
+    integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy&#43;Ub9QgnxUYJmwOhYCK" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/friend">
+        <div class='main-nav-icon icon rotate'>&#xe62b;</div>
+        <span class="main-nav-link">友链</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="如何建立 Sega 游戏服务器"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">如何建立 Sega 游戏服务器</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#环境要求对比">环境要求对比</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#步骤-1获取-docker-镜像">步骤 1：获取 Docker 镜像</a></li>
+    <li><a href="#步骤-2配置服务器文件">步骤 2：配置服务器文件</a>
+      <ul>
+        <li><a href="#1编辑-composeyml-文件">（1）编辑 compose.yml 文件</a></li>
+        <li><a href="#2编辑-applicationproperties-文件">（2）编辑 application.properties 文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#步骤-3启动服务器">步骤 3：启动服务器</a>
+      <ul>
+        <li><a href="#note">注意注意！</a></li>
+      </ul>
+    </li>
+    <li><a href="#步骤-4验证服务器并注册账号">步骤 4：验证服务器并注册账号</a></li>
+    <li><a href="#步骤-5配置游戏客户端">步骤 5：配置游戏客户端</a></li>
+    <li><a href="#关闭服务器">关闭服务器</a></li>
+    <li><a href="#注意事项">注意事项</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="RevelYun"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">RevelYun</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">2</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">5</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-bilibili sidebar-social-icon">
+      <a
+        href="https://space.bilibili.com/399271575"
+        itemprop="url"
+        target="_blank"
+        aria-label="bilibili"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:fon11734@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/fon11731"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-steam sidebar-social-icon">
+      <a
+        href="https://steamcommunity.com/id/TQZY-0001/"
+        itemprop="url"
+        target="_blank"
+        aria-label="steam"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-twitter sidebar-social-icon">
+      <a
+        href="https://x.com/icntor"
+        itemprop="url"
+        target="_blank"
+        aria-label="twitter"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-youtube sidebar-social-icon">
+      <a
+        href="https://www.youtube.com/@TQZY-0001"
+        itemprop="url"
+        target="_blank"
+        aria-label="youtube"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-zhihu sidebar-social-icon">
+      <a
+        href="https://www.zhihu.com/people/hddk-27"
+        itemprop="url"
+        target="_blank"
+        aria-label="zhihu"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">友链</div>
+    </div></div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-12-15 11:52:25 &#43;0800 CST" itemprop="datePublished"
+      >2025-12-15</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-12-15</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/sega"
+      data-aos="zoom-in"
+      >SEGA</a
+    ><a
+      class="article-category-link"
+      href="/categories/%e6%b8%b8%e6%88%8f"
+      data-aos="zoom-in"
+      >游戏</a
+    ><a
+      class="article-category-link"
+      href="/categories/%e6%9c%8d%e5%8a%a1%e5%99%a8"
+      data-aos="zoom-in"
+      >服务器</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="前言">
+<a class="header-anchor" href="#%e5%89%8d%e8%a8%80"></a>
+前言
+</h1><p>目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。</p>
+<p>开源的服务器项目主要有两个：</p>
+<ul>
+<li><a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/">ARTEMIS</a></li>
+<li><a href="https://github.com/MewoLab/AquaDX/">AquaDX</a></li>
+</ul>
+<p>本文将先聚焦于 AquaDX 的搭建教程。</p>
+<blockquote>
+<p>重要提示：本文分享的文件均不可外传！使用时请严格遵循各服务器的开源协议。</p>
+</blockquote>
+<h1 id="准备环境">
+<a class="header-anchor" href="#%e5%87%86%e5%a4%87%e7%8e%af%e5%a2%83"></a>
+准备环境
+</h1><p>ARTEMiS 服务端主要支持较旧的游戏版本，而 AquaDX 则更侧重支持较新的游戏版本。具体支持的游戏版本可参考官方说明：</p>
+<ul>
+<li><a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/#supported-games">ARTEMIS 支持游戏</a></li>
+<li><a href="https://github.com/MewoLab/AquaDX/?tab=readme-ov-file#supported-games">AquaDX 支持游戏</a></li>
+</ul>
+<h2 id="环境要求对比">
+<a class="header-anchor" href="#%e7%8e%af%e5%a2%83%e8%a6%81%e6%b1%82%e5%af%b9%e6%af%94"></a>
+环境要求对比
+</h2><table>
+  <thead>
+      <tr>
+          <th>环境项</th>
+          <th>AquaDX 要求</th>
+          <th>ARTEMIS 要求</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>编译环境</td>
+          <td>Java</td>
+          <td>Python</td>
+      </tr>
+      <tr>
+          <td>其他必要环境</td>
+          <td>Docker</td>
+          <td>Docker</td>
+      </tr>
+  </tbody>
+</table>
+<p>请根据选择的服务端提前准备好对应环境。</p>
+<h1 id="aquadx-配置和部署">
+<a class="header-anchor" href="#aquadx-%e9%85%8d%e7%bd%ae%e5%92%8c%e9%83%a8%e7%bd%b2"></a>
+AquaDX 配置和部署
+</h1><p>AquaDX 有两种部署方式：</p>
+<ul>
+<li>Docker 直接部署（推荐）</li>
+<li>编译成 Jar 后部署</li>
+</ul>
+<p>Docker 部署更快捷、自动化程度高且便于管理，本文以 Docker 部署为例进行演示。</p>
+<blockquote>
+<p>备注：Java 编译过程较为繁琐且易出问题，因此优先推荐 Docker 方式 (x</p>
+</blockquote>
+<h2 id="步骤-1获取-docker-镜像">
+<a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4-1%e8%8e%b7%e5%8f%96-docker-%e9%95%9c%e5%83%8f"></a>
+步骤 1：获取 Docker 镜像
+</h2><ul>
+<li>官方镜像：<a href="https://hub.docker.com/r/hykilpikonna/aquadx">Docker 官方镜像</a>（默认反代 aquadx.net，不推荐新手使用）</li>
+<li>推荐镜像：<a href="https://www.123684.com/s/YLkiVv-YL4Hh">自定义镜像</a>（提取码：V8T0，解压密码：AquaDX）</li>
+<li><a href="/post/2025-12-15-performai-server-bulid/#note">运行有问题的话看这个</a></li>
+</ul>
+<h2 id="步骤-2配置服务器文件">
+<a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4-2%e9%85%8d%e7%bd%ae%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%96%87%e4%bb%b6"></a>
+步骤 2：配置服务器文件
+</h2><p>下载并解压镜像后，需修改以下配置文件：</p>
+<h3 id="1编辑-composeyml-文件">
+<a class="header-anchor" href="#1%e7%bc%96%e8%be%91-composeyml-%e6%96%87%e4%bb%b6"></a>
+（1）编辑 compose.yml 文件
+</h3><p>找到以下代码块：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">http</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">caddy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./Caddyfile:/etc/caddy/Caddyfile:ro</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">8080</span>:<span style="color:#ae81ff">8080</span>
+</span></span></code></pre></div><p>修改 <code>ports</code> 中的端口号（如将 8080 改为其他端口），避免端口冲突。</p>
+<h3 id="2编辑-applicationproperties-文件">
+<a class="header-anchor" href="#2%e7%bc%96%e8%be%91-applicationproperties-%e6%96%87%e4%bb%b6"></a>
+（2）编辑 application.properties 文件
+</h3><p>找到并修改以下项为你的局域网 IP（不可使用 127.0.0.1）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#75715e"># ALL.NET 服务器配置</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allnet.server.host</span><span style="color:#f92672">=</span><span style="color:#e6db74">192.168.0.1  # 局域网 IP</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allnet.server.port</span><span style="color:#f92672">=</span><span style="color:#e6db74">80           # ALL.NET 服务器端口</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 服务器重定向地址（需与 compose.yml 中的端口一致）</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allnet.server.redirect</span><span style="color:#f92672">=</span><span style="color:#e6db74">http://192.168.0.1:8080</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Web 端口配置</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server.port</span><span style="color:#f92672">=</span><span style="color:#e6db74">80                  # Web 访问端口</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 邮件服务器地址（一般无需使用，可留空）</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aqua-net.email.webHost</span><span style="color:#f92672">=</span><span style="color:#e6db74">192.168.0.1</span>
+</span></span></code></pre></div><blockquote>
+<p>若配置不生效，可尝试在 <code>/AquaDX/config/application.properties</code> 路径下再次按上述方法设置。</p>
+</blockquote>
+<h2 id="步骤-3启动服务器">
+<a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4-3%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1%e5%99%a8"></a>
+步骤 3：启动服务器
+</h2><p>在服务器根目录打开终端，输入以下命令启动服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up
+</span></span></code></pre></div><p>等待部署完成，当终端显示 <code>⭐️ ALL PERFECT ⭐️</code> 时，说明服务器成功运行。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@refs/tags/1/image/image.png" alt="服务器启动成功示意"></p>
+<p>或者是</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@refs/heads/main/image/image-Docker.png" alt="在docker桌面示意"></p>
+<h3 id="note">
+<a class="header-anchor" href="#note"></a>
+注意注意！
+</h3><p>如果部署时卡状态那么是 node_modules 的问题。因为我卡过，是因为<code>lxgw-wenkai-lite-webfont</code>的问题</p>
+<p>卡住的可以下载<a href="https://www.123865.com/s/YLkiVv-PL4Hh">node_modules</a>提取码：node该文件解压后进行放置，位置为下图
+<img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@main/image/image-File-placement-path.png" alt="文件夹位置"></p>
+<h2 id="步骤-4验证服务器并注册账号">
+<a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4-4%e9%aa%8c%e8%af%81%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%b9%b6%e6%b3%a8%e5%86%8c%e8%b4%a6%e5%8f%b7"></a>
+步骤 4：验证服务器并注册账号
+</h2><ol>
+<li>
+<p>在浏览器中访问服务器地址：</p>
+<ul>
+<li>方式 1：局域网 IP + ALL.NET 端口（如 <code>192.168.0.102:80</code>）</li>
+<li>方式 2：<code>allnet.server.redirect</code> 配置地址（如 <code>192.168.0.102:8080</code>）</li>
+</ul>
+<blockquote>
+<p>若端口为 80，可直接输入 IP 访问（无需加端口）。</p>
+</blockquote>
+</li>
+<li>
+<p>注册账号：</p>
+<ul>
+<li>输入任意邮箱和用户名，点击注册（无需验证邮箱，默认关闭验证）。</li>
+<li>使用注册的邮箱和密码登录即可进入服务器后台。</li>
+</ul>
+</li>
+</ol>
+<h2 id="步骤-5配置游戏客户端">
+<a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4-5%e9%85%8d%e7%bd%ae%e6%b8%b8%e6%88%8f%e5%ae%a2%e6%88%b7%e7%ab%af"></a>
+步骤 5：配置游戏客户端
+</h2><p>根据获取的 DNS 和“狗号”信息，配置游戏客户端的 <code>segatools.ini</code> 文件，即可连接本地服务器。</p>
+<h2 id="关闭服务器">
+<a class="header-anchor" href="#%e5%85%b3%e9%97%ad%e6%9c%8d%e5%8a%a1%e5%99%a8"></a>
+关闭服务器
+</h2><p>在终端中输入以下命令即可关闭服务器：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose down
+</span></span></code></pre></div><p>或者是在桌面直接 stop</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@refs/heads/main/image/image-Docker.png" alt="在docker桌面示意"></p>
+<h2 id="注意事项">
+<a class="header-anchor" href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9"></a>
+注意事项
+</h2><ul>
+<li>ARTEMIS 的官方教程更全面，若需搭建旧版本游戏服务器可参考其文档。</li>
+<li>请勿利用本地服务器逃避在线服的封号机制，此类行为无意义。</li>
+<li>禁止将此技术用于收费支持，该技术无特殊门槛，商业化行为不可取。</li>
+</ul>
+<h1 id="相关文档">
+<a class="header-anchor" href="#%e7%9b%b8%e5%85%b3%e6%96%87%e6%a1%a3"></a>
+相关文档
+</h1><ul>
+<li><a href="https://github.com/MewoLab/AquaDX/blob/v1-dev/docs/self-hosting.md">AquaDX 自托管教程</a></li>
+<li><a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/src/branch/master/docs/INSTALL_WINDOWS.md">ARTEMIS 安装教程（Windows）</a></li>
+<li><a href="https://docs.docker.com/engine/install/">Docker 官方安装教程</a></li>
+<li><a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/src/branch/master/docs/INSTALL_WINDOWS.md">MariaDB 官方安装教程</a></li>
+</ul>
+</div>
+    <footer class="article-footer"><blockquote class="article-copyright"><p><strong><span class="icon-user icon"></span>本文作者：</strong>RevelYun</p><p>
+      <strong><span class="icon-link icon"></span>本文链接：</strong><a href="http://localhost:1313/post/2025-12-15-performai-server-bulid/">http://localhost:1313/post/2025-12-15-performai-server-bulid/</a>
+    </p><p><strong><span class="icon-pencil icon"></span>本文标题：</strong>如何建立 Sega 游戏服务器</p><p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2025-12-15 11:52:25</p><p>
+      
+      <strong><span class="icon-copyright icon"></span>本文版权：</strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span></blockquote>
+<a
+          data-aos="zoom-in"
+          href="/post/2025-12-15-performai-server-bulid/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count waline-comment-count"
+            data-path="/post/2025-12-15-performai-server-bulid/"
+            itemprop="commentCount"
+          ></span>
+          留言
+        </a><span
+          data-aos="zoom-in"
+          class="article-visitor-link"
+        >
+          <span
+            class="waline-pageview-count"
+            data-path="/post/2025-12-15-performai-server-bulid/"
+            >0</span
+          >
+          <em class="post-meta-item-text">阅读量</em>
+        </span><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/sega"
+        rel="tag"
+        >SEGA</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/%e6%b8%b8%e6%88%8f"
+        rel="tag"
+        >游戏</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/%e6%9c%8d%e5%8a%a1%e5%99%a8"
+        rel="tag"
+        >服务器</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="我的第一篇博客"
+              class="lazyload"
+            /><a
+          href="/post/first-post/"
+          aria-label="前一篇:我的第一篇博客"
+          title="前一篇:我的第一篇博客"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">我的第一篇博客</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">说些什么吧！</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="waline">
+          <span>waline</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment waline-comment" data-aos="fade-up"
+     >
+    </div></div>
+</section></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      RevelYun
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;1.3k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;00:04</span>
+      </div><div class="footer-beian">
+        <img
+          style="object-fit: contain;margin-right: 2px;"
+          src="https://icp.gov.moe/images/ico64.png"
+          alt=""
+          width="24"
+          height="24"
+        />
+        <a
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          href="https://icp.gov.moe/?keyword=20252882"
+          >萌ICP备20252882号</a
+        >
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#环境要求对比">环境要求对比</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#步骤-1获取-docker-镜像">步骤 1：获取 Docker 镜像</a></li>
+    <li><a href="#步骤-2配置服务器文件">步骤 2：配置服务器文件</a>
+      <ul>
+        <li><a href="#1编辑-composeyml-文件">（1）编辑 compose.yml 文件</a></li>
+        <li><a href="#2编辑-applicationproperties-文件">（2）编辑 application.properties 文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#步骤-3启动服务器">步骤 3：启动服务器</a>
+      <ul>
+        <li><a href="#note">注意注意！</a></li>
+      </ul>
+    </li>
+    <li><a href="#步骤-4验证服务器并注册账号">步骤 4：验证服务器并注册账号</a></li>
+    <li><a href="#步骤-5配置游戏客户端">步骤 5：配置游戏客户端</a></li>
+    <li><a href="#关闭服务器">关闭服务器</a></li>
+    <li><a href="#注意事项">注意事项</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="RevelYun"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">RevelYun</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">2</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">5</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-bilibili sidebar-social-icon">
+      <a
+        href="https://space.bilibili.com/399271575"
+        itemprop="url"
+        target="_blank"
+        aria-label="bilibili"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:fon11734@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/fon11731"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-steam sidebar-social-icon">
+      <a
+        href="https://steamcommunity.com/id/TQZY-0001/"
+        itemprop="url"
+        target="_blank"
+        aria-label="steam"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-twitter sidebar-social-icon">
+      <a
+        href="https://x.com/icntor"
+        itemprop="url"
+        target="_blank"
+        aria-label="twitter"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-youtube sidebar-social-icon">
+      <a
+        href="https://www.youtube.com/@TQZY-0001"
+        itemprop="url"
+        target="_blank"
+        aria-label="youtube"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-zhihu sidebar-social-icon">
+      <a
+        href="https://www.zhihu.com/people/hddk-27"
+        itemprop="url"
+        target="_blank"
+        aria-label="zhihu"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
+      <div class="sidebar-menu-link">友链</div>
+    </div></div>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" ></script><script src="/js/aos.js" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+    if (window.firework) {
+      const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+      options.excludeElements = options.excludeelements;
+      delete options.excludeelements;
+      window.firework(options);
+    }
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "RevelYun",
+          title: "如何建立 Sega 游戏服务器",
+          url: "http:\/\/localhost:1313\/post\/2025-12-15-performai-server-bulid\/",
+          description: "\r前言\r目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。\n开源的服务器项目主要有两个：\nARTEMIS AquaDX 本文将先聚焦于 AquaDX 的搭建教程。\n重要提示：本文分享的文件均不可外传！使用时请严格遵循各服务器的开源协议。\n",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" data-pjax></script><script src="/js/tabs.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus', 'disqus'];
+  var commentConfig = {waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https:\/\/npm.webcache.cn\/@waline\/client@2.15.8\/dist\/waline.mjs';
+        
+        if ('webcache|@waline\/client@2.15.8\/dist\/waline.mjs'.startsWith('local')) {
+          
+          const module = await safeImport(walineCdn);
+          walineInit = module.init;
+        } else {
+          
+          const module = await safeImport(
+            walineCdn, 
+            'sha384-9sbqJjrfGjbkI6\/PI4nU\/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH\/KinBEAZII\/5'
+          );
+          walineInit = module.init;
+        }
+        
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'https:\/\/waline-beige-alpha.vercel.app\/',
+          lang: document.documentElement.lang || 'en',
+          locale: JSON.parse("{}"),
+          emoji: JSON.parse("[\"https://unpkg.com/@waline/emojis@1.2.0/weibo\",\"https://unpkg.com/@waline/emojis@1.2.0/alus\",\"https://unpkg.com/@waline/emojis@1.2.0/bilibili\",\"https://unpkg.com/@waline/emojis@1.2.0/qq\",\"https://unpkg.com/@waline/emojis@1.2.0/tieba\",\"https://unpkg.com/@waline/emojis@1.2.0/tw-emoji\"]"),
+          meta: JSON.parse("[\"nick\",\"mail\",\"link\"]"),
+          requiredMeta: JSON.parse("[\"nick\",\"mail\"]"),
+          wordLimit:  0 ,
+          comment: true,
+          pageSize:  10 ,
+          dark: 'html[data-theme="dark"]',
+          pageview:  true ,
+        });
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>
