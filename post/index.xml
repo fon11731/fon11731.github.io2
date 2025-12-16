@@ -35,14 +35,15 @@
 <a class="header-anchor" href="#%e5%89%8d%e8%a8%80"></a>
 前言
 </h2><p>目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。</p>
+<blockquote>
+<p>HDD文件我也不会提供</p>
+</blockquote>
 <p>开源的服务器项目主要有两个：</p>
 <ul>
 <li><a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/">ARTEMIS</a></li>
 <li><a href="https://github.com/MewoLab/AquaDX/">AquaDX</a></li>
 </ul>
 <p>本文将先聚焦于 AquaDX 的搭建教程。</p>
-<blockquote>
-<p>重要提示：本文分享的文件均不可外传！使用时请严格遵循各服务器的开源协议。</p>
         
         <hr><p>本文2025-12-15首发于<a href='http://localhost:1313/'>RevelYun'blog</a>，最后修改于2025-12-15</p><p>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</p>]]>
       </description>
@@ -93,7 +94,7 @@
 各种邮箱
 </h2><blockquote>
 <p><a href="mailto:fon11734@gmail.com">谷歌邮箱</a></p>
-<p><a href="mailto:fon11734@gmail.com">谷歌邮箱</a></p>
+<p><a href="mailto:fon1173@163.com">网易邮箱</a></p>
 </blockquote>
         
         <hr><p>本文2025-12-14首发于<a href='http://localhost:1313/'>RevelYun'blog</a>，最后修改于2025-12-14</p><p>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</p>]]>
