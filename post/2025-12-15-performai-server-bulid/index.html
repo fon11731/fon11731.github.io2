@@ -183,7 +183,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">2</div>
+    <div>文章</div><div class="sidebar-state-number">3</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -328,18 +328,7 @@
       data-aos="zoom-in"
       >服务器</a
     ></div>
-</div><div class="article-entry">
-      <blockquote
-        class="article-summary"
-        data-aos="zoom-in"
-      >
-        <p>前言目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。
-开源的服务器项目主要有两个：
-ARTEMIS AquaDX 本文将先聚焦于 AquaDX 的搭建教程。
-重要提示：本文分享的文件均不可外传！使用时请严格遵循各服务器的开源协议。
-</p>
-      </blockquote>
-    </div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><blockquote
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><blockquote
           class="alert-blockquote warning"
           id="outdate-blockquote"
           style="display: none;"
@@ -420,30 +409,30 @@ AquaDX 配置和部署
 <a class="header-anchor" href="#1%e7%bc%96%e8%be%91-composeyml-%e6%96%87%e4%bb%b6"></a>
 （1）编辑 compose.yml 文件
 </h3><p>找到以下代码块：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">http</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">caddy</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./Caddyfile:/etc/caddy/Caddyfile:ro</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">8080</span>:<span style="color:#ae81ff">8080</span>
-</span></span></code></pre></div><p>修改 <code>ports</code> 中的端口号（如将 8080 改为其他端口），避免端口冲突。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">http</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">caddy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./Caddyfile:/etc/caddy/Caddyfile:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8080</span><span class="p">:</span><span class="m">8080</span><span class="w">
+</span></span></span></code></pre></div><p>修改 <code>ports</code> 中的端口号（如将 8080 改为其他端口），避免端口冲突。</p>
 <h3 id="2编辑-applicationproperties-文件">
 <a class="header-anchor" href="#2%e7%bc%96%e8%be%91-applicationproperties-%e6%96%87%e4%bb%b6"></a>
 （2）编辑 application.properties 文件
 </h3><p>找到并修改以下项为你的局域网 IP（不可使用 127.0.0.1）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#75715e"># ALL.NET 服务器配置</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allnet.server.host</span><span style="color:#f92672">=</span><span style="color:#e6db74">192.168.0.1  # 局域网 IP</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allnet.server.port</span><span style="color:#f92672">=</span><span style="color:#e6db74">80           # ALL.NET 服务器端口</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 服务器重定向地址（需与 compose.yml 中的端口一致）</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allnet.server.redirect</span><span style="color:#f92672">=</span><span style="color:#e6db74">http://192.168.0.1:8080</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Web 端口配置</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server.port</span><span style="color:#f92672">=</span><span style="color:#e6db74">80                  # Web 访问端口</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 邮件服务器地址（一般无需使用，可留空）</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aqua-net.email.webHost</span><span style="color:#f92672">=</span><span style="color:#e6db74">192.168.0.1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1"># ALL.NET 服务器配置</span>
+</span></span><span class="line"><span class="cl"><span class="na">allnet.server.host</span><span class="o">=</span><span class="s">192.168.0.1  # 局域网 IP</span>
+</span></span><span class="line"><span class="cl"><span class="na">allnet.server.port</span><span class="o">=</span><span class="s">80           # ALL.NET 服务器端口</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 服务器重定向地址（需与 compose.yml 中的端口一致）</span>
+</span></span><span class="line"><span class="cl"><span class="na">allnet.server.redirect</span><span class="o">=</span><span class="s">http://192.168.0.1:8080</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Web 端口配置</span>
+</span></span><span class="line"><span class="cl"><span class="na">server.port</span><span class="o">=</span><span class="s">80                  # Web 访问端口</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 邮件服务器地址（一般无需使用，可留空）</span>
+</span></span><span class="line"><span class="cl"><span class="na">aqua-net.email.webHost</span><span class="o">=</span><span class="s">192.168.0.1</span>
 </span></span></code></pre></div><blockquote>
 <p>若配置不生效，可尝试在 <code>/AquaDX/config/application.properties</code> 路径下再次按上述方法设置。</p>
 </blockquote>
@@ -451,7 +440,7 @@ AquaDX 配置和部署
 <a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4-3%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1%e5%99%a8"></a>
 步骤 3：启动服务器
 </h2><p>在服务器根目录打开终端，输入以下命令启动服务：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up
 </span></span></code></pre></div><p>等待部署完成，当终端显示 <code>⭐️ ALL PERFECT ⭐️</code> 时，说明服务器成功运行。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@refs/tags/1/image/image.png" alt="服务器启动成功示意"></p>
 <p>或者是</p>
@@ -469,8 +458,8 @@ AquaDX 配置和部署
 <li>
 <p>在浏览器中访问服务器地址：</p>
 <ul>
-<li>方式 1：局域网 IP + ALL.NET 端口（如 <code>192.168.0.102:80</code>）</li>
-<li>方式 2：<code>allnet.server.redirect</code> 配置地址（如 <code>192.168.0.102:8080</code>）</li>
+<li>方式 1：局域网 IP + ALL.NET 端口（如 <code>192.168.0.1:80</code>）</li>
+<li>方式 2：<code>allnet.server.redirect</code> 配置地址（如 <code>192.168.0.1:8080</code>）</li>
 </ul>
 <blockquote>
 <p>若端口为 80，可直接输入 IP 访问（无需加端口）。</p>
@@ -492,7 +481,7 @@ AquaDX 配置和部署
 <a class="header-anchor" href="#%e5%85%b3%e9%97%ad%e6%9c%8d%e5%8a%a1%e5%99%a8"></a>
 关闭服务器
 </h2><p>在终端中输入以下命令即可关闭服务器：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose down
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose down
 </span></span></code></pre></div><p>或者是在桌面直接 stop</p>
 <p><img src="https://cdn.jsdelivr.net/gh/fon11731/CDN@refs/heads/main/image/image-Docker.png" alt="在docker桌面示意"></p>
 <h2 id="注意事项">
@@ -587,15 +576,15 @@ AquaDX 配置和部署
   ><div class="article-nav-link-wrap left"><img
               data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
               data-sizes="auto"
-              alt="我的第一篇博客"
+              alt="个人各种链接"
               class="lazyload"
             /><a
-          href="/post/first-post/"
-          aria-label="前一篇:我的第一篇博客"
-          title="前一篇:我的第一篇博客"
+          href="/post/2025-12-14-various-links/"
+          aria-label="前一篇:个人各种链接"
+          title="前一篇:个人各种链接"
         ></a>
         <div class="article-nav-caption">前一篇</div>
-        <h3 class="article-nav-title">我的第一篇博客</h3>
+        <h3 class="article-nav-title">个人各种链接</h3>
       </div></nav></article><section id="comments" data-aos="fade-up">
 <div class="comment-header"><h2 class="comment-title">说些什么吧！</h2>
   <div class="comment-selector">
@@ -630,10 +619,10 @@ AquaDX 配置和部署
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;1.3k</span
+          >&nbsp;1.4k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;00:04</span>
+        <span class="icon-coffee">&nbsp;00:05</span>
       </div><div class="footer-beian">
         <img
           style="object-fit: contain;margin-right: 2px;"
@@ -708,7 +697,7 @@ AquaDX 配置和部署
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">2</div>
+    <div>文章</div><div class="sidebar-state-number">3</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
