@@ -347,6 +347,14 @@ body [data-aos="zoom-in"] {
   content: "\e62e";
 }
 
+.icon-telegram:before {
+  content: "\e623";
+}
+
+.icon-discord:before {
+  content: "\e60d";
+}
+
 .icon-steam:before {
   content: "\e624";
 }
@@ -3484,6 +3492,14 @@ mjx-container::-webkit-scrollbar {
 
 .icon-zhihu {
   color: #0084ff;
+}
+
+.icon-telegram {
+  color: #0088cc;
+}
+
+.icon-discord {
+  color: #7289da;
 }
 
 .icon-steam {

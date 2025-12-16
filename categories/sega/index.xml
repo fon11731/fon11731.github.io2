@@ -31,10 +31,10 @@
       <description>
         <![CDATA[<h1>如何建立 Sega 游戏服务器</h1><p>作者：RevelYun（fon11731@gmail.com）</p>
         
-          <h1 id="前言">
+          <h2 id="前言">
 <a class="header-anchor" href="#%e5%89%8d%e8%a8%80"></a>
 前言
-</h1><p>目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。</p>
+</h2><p>目前关于 Sega 游戏服务器的搭建教程较为稀缺，且搭建过程需要一定技术基础。</p>
 <p>开源的服务器项目主要有两个：</p>
 <ul>
 <li><a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/">ARTEMIS</a></li>
