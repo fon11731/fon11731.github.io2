@@ -55,34 +55,35 @@
     
 
     <item>
-      <title>各种链接</title>
+      <title>个人各种链接</title>
       <link>http://localhost:1313/post/2025-12-14-various-links/</link>
       <pubDate>Sun, 14 Dec 2025 12:00:00 &#43;0800</pubDate>
       <author>fon11731@gmail.com (RevelYun)</author>
       <guid>http://localhost:1313/post/2025-12-14-various-links/</guid>
       <description>
-        <![CDATA[<h1>各种链接</h1><p>作者：RevelYun（fon11731@gmail.com）</p>
+        <![CDATA[<h1>个人各种链接</h1><p>作者：RevelYun（fon11731@gmail.com）</p>
         
-          <h1 id="我的第一篇reimu主题博客">
-<a class="header-anchor" href="#%e6%88%91%e7%9a%84%e7%ac%ac%e4%b8%80%e7%af%87reimu%e4%b8%bb%e9%a2%98%e5%8d%9a%e5%ae%a2"></a>
-我的第一篇Reimu主题博客
-</h1><p>这是基于Windows11 + Hugo + GitHub双仓搭建的博客，主题是Reimu！</p>
-<h2 id="reimu主题亮点">
-<a class="header-anchor" href="#reimu%e4%b8%bb%e9%a2%98%e4%ba%ae%e7%82%b9"></a>
-Reimu主题亮点
-</h2><ol>
-<li>二次元风格界面，颜值拉满</li>
-<li>支持明暗模式自动切换</li>
-<li>轻量高效，加载速度快</li>
-</ol>
-<h2 id="后续计划">
-<a class="header-anchor" href="#%e5%90%8e%e7%bb%ad%e8%ae%a1%e5%88%92"></a>
-后续计划
-</h2><ul>
-<li>配置评论功能（Waline/Giscus）</li>
-<li>自定义主题配色</li>
-<li>绑定个人域名</li>
-</ul>
+          <h2 id="国内平台">
+<a class="header-anchor" href="#%e5%9b%bd%e5%86%85%e5%b9%b3%e5%8f%b0"></a>
+国内平台
+</h2><blockquote>
+<p><a href="https://space.bilibili.com/399271575">哔哩哔哩</a></p>
+<p><a href="https://www.zhihu.com/people/hddk-27">知乎</a></p>
+<p><a href="https://music.163.com/#/artist?id=57676812">网易云音乐</a></p>
+</blockquote>
+<hr>
+<h2 id="国外平台">
+<a class="header-anchor" href="#%e5%9b%bd%e5%a4%96%e5%b9%b3%e5%8f%b0"></a>
+国外平台
+</h2><h4 id="需要挂科学才能来哦">
+<a class="header-anchor" href="#%e9%9c%80%e8%a6%81%e6%8c%82%e7%a7%91%e5%ad%a6%e6%89%8d%e8%83%bd%e6%9d%a5%e5%93%a6"></a>
+需要挂科学才能来哦
+</h4><blockquote>
+<p><a href="https://www.youtube.com/@TQZY-0001">油管</a></p>
+<p><a href="https://steamcommunity.com/id/TQZY-0001/">steam</a></p>
+<p><a href="https://x.com/icntor">Twitter</a></p>
+<p><a href="https://www.twitch.tv/fon11734">twitch</a></p>
+</blockquote>
         
         <hr><p>本文2025-12-14首发于<a href='http://localhost:1313/'>RevelYun'blog</a>，最后修改于2025-12-14</p><p>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</p>]]>
       </description>
